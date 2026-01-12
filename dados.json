@@ -32,14 +32,6 @@
     "data": "2026-01-12T22:27:41.427Z"
   },
   {
-    "id": "fc91cdbe-2536-48cc-89f3-caf1bad6e3f9",
-    "principal": "Maicon",
-    "subconvidados": [
-      "Hig"
-    ],
-    "data": "2026-01-12T23:09:03.179Z"
-  },
-  {
     "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
     "principal": "Gustavo",
     "subconvidados": [
@@ -54,5 +46,13 @@
       "Ludmilla"
     ],
     "data": "2026-01-12T23:12:44.816Z"
+  },
+  {
+    "id": "fc91cdbe-2536-48cc-89f3-caf1bad6e3f9",
+    "principal": "Maicon",
+    "subconvidados": [
+      "User 2"
+    ],
+    "data": "2026-01-12T23:15:50.412Z"
   }
 ]
