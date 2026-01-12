@@ -7,5 +7,13 @@
       "Obfuscador"
     ],
     "data": "2026-01-12T08:33:53.443Z"
+  },
+  {
+    "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
+    "principal": "Navigator 2",
+    "subconvidados": [
+      "Test 2"
+    ],
+    "data": "2026-01-12T08:41:26.808Z"
   }
 ]
