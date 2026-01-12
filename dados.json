@@ -26,12 +26,6 @@
     "data": "2026-01-12T19:58:43.185Z"
   },
   {
-    "id": "aaa2f707-42b5-4880-a05c-ee3af0fc47b3",
-    "principal": "",
-    "subconvidados": [],
-    "data": "2026-01-12T19:59:47.865Z"
-  },
-  {
     "id": "bb2d58f1-027f-4570-89cf-8fe8a92b6d0c",
     "principal": "Laurinha top",
     "subconvidados": [],
@@ -42,5 +36,11 @@
     "principal": "Katia",
     "subconvidados": [],
     "data": "2026-01-12T20:40:58.747Z"
+  },
+  {
+    "id": "aaa2f707-42b5-4880-a05c-ee3af0fc47b3",
+    "principal": "O mais bonito de Osasco",
+    "subconvidados": [],
+    "data": "2026-01-12T22:27:41.427Z"
   }
 ]
