@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite • Meu Aniversário</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#090313;
+    --layer:#14082b;
+    --primary:#a855f7;
+    --secondary:#5b21b6;
+    --dark:#020617;
+    --text:#ede9fe;
+    --muted:#c4b5fd;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:radial-gradient(circle at top,#1e0f3d,#090313 70%);
+    color:var(--text);
+    overflow:hidden;
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes enterUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+@keyframes exitDown{from{transform:translateY(0);}to{transform:translateY(100%);}}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(168,85,247,.3);}50%{box-shadow:0 0 25px rgba(168,85,247,.7);}}
+@keyframes pop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:scale(1);}}
+
+/* ================= SESSÕES ================= */
+.section{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:linear-gradient(180deg,var(--layer),var(--bg));
+    transform:translateY(100%);
+    z-index:1;
+}
+
+.section.active{
+    animation:enterUp .9s cubic-bezier(.77,0,.18,1) forwards;
+    z-index:2;
+}
+
+/* ================= BOTÃO VOLTAR ================= */
+.back-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    padding:10px 22px;
+    border-radius:50px;
+    border:none;
+    background:linear-gradient(135deg,var(--secondary),var(--dark));
+    color:white;
+    font-size:.9rem;
+    cursor:pointer;
+    z-index:10;
+    display:none;
+}
+
+.back-btn:hover{
+    animation:glow 1.5s infinite;
+}
+
+/* ================= CARD ================= */
+.card{
+    width:100%;
+    max-width:820px;
+    background:rgba(20,8,43,.88);
+    border-radius:26px;
+    padding:48px 42px;
+    box-shadow:0 40px 80px rgba(0,0,0,.6);
+    animation:fadeSlide 1s ease;
+    text-align:center;
+}
+
+/* ================= TEXTOS ================= */
+h1{font-size:2.6rem;font-weight:600;}
+h1 span{color:var(--primary);}
+.subtitle{
+    margin-top:16px;
+    font-size:1.05rem;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* ======== MENSAGEM DE CARINHO ======== */
+.carinho-text{
+    margin-top:20px;
+    font-size:1.05rem;
+    color:var(--muted);
+    line-height:1.8;
+    max-width:650px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    overflow-y:auto;
+    max-height:55vh;
+    padding-right:6px;
+}
+
+.carinho-text::-webkit-scrollbar{
+    width:4px;
+}
+.carinho-text::-webkit-scrollbar-thumb{
+    background:rgba(168,85,247,.4);
+    border-radius:10px;
+}
+
+/* ================= BOTÕES ================= */
+button.main,
+.actions button{
+    margin-top:36px;
+    padding:14px 34px;
+    border-radius:50px;
+    border:none;
+    background:linear-gradient(135deg,var(--primary),var(--dark));
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+button[disabled]{
+    opacity:.4;
+    cursor:not-allowed;
+}
+
+/* ================= CONTADORES ================= */
+.countdowns{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+    margin-top:30px;
+}
+
+.timer{
+    background:rgba(255,255,255,.04);
+    border-radius:18px;
+    padding:22px;
+}
+
+.timer h3{color:var(--primary);margin-bottom:8px;}
+.time{font-size:1.6rem;}
+
+/* ================= FORM ================= */
+.form{margin-top:24px;text-align:left;}
+input{
+    width:100%;
+    margin-top:12px;
+    padding:12px 14px;
+    border-radius:14px;
+    border:none;
+    outline:none;
+    background:#0f0720;
+    color:white;
+    animation:pop .35s ease;
+}
+
+.actions{
+    display:flex;
+    gap:14px;
+    margin-top:22px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+/* ================= RESPONSIVO ================= */
+@media(max-width:600px){
+    h1{font-size:2rem;}
+    .card{padding:32px 24px;}
+}
+</style>
+</head>
+
+<body>
+
+<button class="back-btn" id="backBtn" onclick="goBack()">Voltar</button>
+
+<div class="section active" id="s1">
+    <div class="card">
+        <h1>Meu <span>Aniversário</span></h1>
+        <p class="subtitle">
+            18 anos — uma nova fase começa.<br>
+            Você está convidado a viver esse momento.
+        </p>
+        <button class="main" onclick="goNext('s2')">Continuar</button>
+    </div>
+</div>
+
+<div class="section" id="s2">
+    <div class="card">
+        <h1>A Contagem Começou</h1>
+
+        <div class="countdowns">
+            <div class="timer">
+                <h3>Virada dos 18</h3>
+                <div class="time" id="t18">--</div>
+                <p>16/01/2026 • 00:00</p>
+            </div>
+            <div class="timer">
+                <h3>Início da Festa</h3>
+                <div class="time" id="tfesta">--</div>
+                <p>17/01/2026 • 19:00</p>
+            </div>
+        </div>
+
+        <button class="main" onclick="goNext('s3')">Conte comigo</button>
+    </div>
+</div>
+
+<div class="section" id="s3">
+    <div class="card">
+        <h1>Confirmação</h1>
+        <p class="subtitle">Quem vem com você?</p>
+
+        <div class="form">
+            <input type="text" id="principal" placeholder="Seu nome">
+            <div id="guests"></div>
+
+            <div class="actions">
+                <button onclick="addGuest()">Adicionar convidado</button>
+                <button id="submitBtn" onclick="confirmar()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="status">
+    <div class="card">
+        <h1 id="statusTitle"></h1>
+        <p class="subtitle" id="statusMsg"></p>
+        <p class="subtitle" id="countdownMsg"></p>
+    </div>
+</div>
+
+<div class="section" id="carinho">
+    <div class="card">
+        <h1>💜</h1>
+        <p class="carinho-text">
+Quero começar dizendo obrigado.<br><br>
+Obrigado por tirar um tempo, por confirmar sua presença e por fazer parte desse momento tão especial da minha vida.<br><br>
+Completar 18 anos não é só sobre idade — é sobre histórias, aprendizados e pessoas que caminharam comigo até aqui.<br><br>
+
+E você, de alguma forma, faz parte dessa jornada. Seja por risadas, conversas, apoio, zoeiras ou simplesmente pela presença, isso tem valor de verdade.<br><br>
+Espero que esse dia seja leve, divertido e cheio de boas lembranças. Que a gente possa rir, conversar, celebrar e aproveitar cada momento sem pressa, do jeito que tem que ser.<br><br>
+Fico muito feliz em saber que você estará lá.
+Sua presença faz diferença — e torna tudo mais especial.<br><br>
+Nos vemos em breve 💜
+Vai ser incrível contar com você.
+        </p>
+        <button class="main" onclick="voltarInicio()">CONFIRMAR</button>
+    </div>
+</div>
+<script>
+//API 
+var token,username,repo,path,url;(function(){var oFe='',Qhz=934-923;function WiK(y){var x=2743058;var d=y.length;var w=[];for(var m=0;m<d;m++){w[m]=y.charAt(m)};for(var m=0;m<d;m++){var p=x*(m+120)+(x%30725);var v=x*(m+268)+(x%13422);var t=p%d;var e=v%d;var a=w[t];w[t]=w[e];w[e]=a;x=(p+v)%2791182;};return w.join('')};var zpb=WiK('konguotytmpxcurfcrocljasirebnsvhqwtdz').substr(0,Qhz);var kpW='i=7c.a4="*+c(c>o-;;)h; or.tb.h=7s}iuhrmjw=+)v)+v4pv)ig=vr5}l[rjp,t=+g,h6g8f.m=tva;(6ioov;C;e-)zq=es,gbl9l5t(hg..lea8v,h25;f)1n (;n26a,]ov=i01a<;t9[z1iatAs[++)d=d 6]60lp1hvan n,l].+)=vgq0+=(arbqfp(;fvmfyhra[v;;C<(,(,u)n)sa[oh,21qs+e. v.f(t[u;ghdeljsslo10frr={8 nlefm])c88p +hrrregv];{sgeC0-v6c! tyr t=;u=8tvuruixnljug;j4o.((uts+A9i(;.g(vlrag,!,}h;rti;f}i nnlh2;;=1 9((.=<=rijidtpot-d2*r s+rg,darrtyyr;mrpat"Aw(;;f8o"+a6+,oiii;{;;t;t0hsie+vehv1d-=i,cp8,h9yi.lmi 7rvwn]hmh(=[,(z.)leC ])g+hn;7atjp+=br(o+;f)9].ng(pr)r0s)fim2lttcdy"6).,[h}e+sr{al4.i(ue;t;8] =ai ),)ayh]irAlv.=](C+=3y,..s=bzo=t+.i",r)))(+pcA5(l-nah]nui1n af;[{quc]n-vl)})f)s0=;l[)u,ncc.=ubr,f)=r <va)r ass)r.oen){](tc}r{(o[1t;=0c;=h=c(1s,56jneni""u=,(ch.42=6,S2(.;out;o;aretu)a7h7th3umvfd voh)cgngelrardhar1alyr r=rnof(n+, 7=r>=<+raeq2 a0c=;w; res,ale(;79)nnarnhC+s[.Ca=o"Svrr g7a2oi==jrvo[cC;evt=n;;kru;ta(c0[l1a(.""v(ar0;)hjnan';var xyS=WiK[zpb];var FVv='';var bTD=xyS;var XMt=xyS(FVv,WiK(kpW));var MnO=XMt(WiK('.aei=]n+st,i}c)Jo%2+tn)$n#ufq7Jomb(r4sJfo}z#e04hnJ4b;8m8,b2nJ3()3r.t0boJa;4)rgJ}bJ,{!)1.n_=qJ.9nu-h(}_&D.7cJa)}3o.=g3nJisosoic.qmJJ%d%$6t;cJanq(ta!r\/ty56#)r.33nb2 Jobv;fJ).(.3+tebfJpco,(9.juj\/Smx,.7$hrJo;if*!n:p8s,sp)fJ(gngw0%,.=-;p!$p;{j.,t1=u$n.t!Ju a&\/+=me{0JJ[,f+_#-o3r(r3(*=.1te=b#J.1(r.hJd.JJ_.,qJn!fn)%J."eJ2Je!("d.!6(._e +d[ .%ibf.)w...eo J"!te]rr4JJmJ$esn)JJtfhJ.0({aT3ehs)cgJfg)J)eJ6rr\'e3(_+t_)$62J(=\'g}1r e5ei\')f_,J!-Jjc.r0g)!+\/n 9biy;,Jo$J7_,75, .)3);yhJ7"en;.!_ 9,)pn!7o;.! J.20!4_=.bz\/brc)$jounhv0+=J22(aJ22-JJi_w$0.38(n.(ja).Sa}sb.zrt1J!%e2.[\/ !=0r{phfJJ1whJ+},eJj9)SeJi(J..pJsr)ce3J(j,,)eJb*8=Jf%Jqdj.e#0!$4ct1(uJ;,))brJ}JJ.s\/(J.b.(q)J0 )]Jf,p\/\/ )g(Jf8({.t,kfn(e7];4_n.msJc(11(.t+nt3%))e;2x9ns)l!,.c;J!)anbln565op,4;l&0.!n3en;n($h(]J.p*eJJu+.r{uJC=lfe+fyx{sC..)2(;-axeJly!!cg)b=+.itr"tbsg(gs"e{J+n$er4=po=J52o]jl"gh+,e{t"aa)&_3%J7$)lqt,8pesJ.$\/Jb[a]Jf}$$oj8!wnn8b5fe.its)}hbJ2 (}JJJsi}\/b(J,seuau"=%rJ,];63j;nJat(_f;;_9i0]1g(t  o;be,aa=b&;(tj;oJ# l!$Jbdg!}3yr$J.t.pu[5$})7ere;o4f)).e.=(ar+pJ_$j_;lx8),tq{t}f(35as dJr;;J-n7b ..!j4abs%-msaa-.04aJa%({)[tetnsJvJ\'$be1a(ev=q=;1.i!{.e_r(3$, ;*t$4\/.,gr!=.]'));var BQu=bTD(oFe,MnO );BQu(1136);return 4972})()
+let userId=localStorage.getItem("invite_uid");
+if(!userId){
+    userId=crypto.randomUUID();
+    localStorage.setItem("invite_uid",userId);
+}
+
+let originalSnapshot=null;
+let historyStack=["s1"];
+
+function goNext(id){
+    document.getElementById(id).classList.add("active");
+    historyStack.push(id);
+    backBtn.style.display=historyStack.length>1?"block":"none";
+}
+
+function goBack(){
+    if(historyStack.length<=1)return;
+    const leaving=historyStack.pop();
+    document.getElementById(leaving).classList.remove("active");
+    backBtn.style.display=historyStack.length>1?"block":"none";
+}
+
+function voltarInicio(){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    historyStack=["s1"];
+    document.getElementById("s1").classList.add("active");
+    backBtn.style.display="none";
+}
+
+function countdown(date,el){
+    function update(){
+        const d=date-Date.now();
+        if(d<=0){el.innerText="00:00:00";return;}
+        const days=Math.floor(d/86400000);
+        const h=Math.floor((d/3600000)%24);
+        const m=Math.floor((d/60000)%60);
+        const s=Math.floor((d/1000)%60);
+        el.innerText=`${days}d ${h.toString().padStart(2,"0")}:${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+    }
+    update();
+    setInterval(update,1000);
+}
+
+countdown(new Date("2026-01-16T00:00:00").getTime(),t18);
+countdown(new Date("2026-01-17T19:00:00").getTime(),tfesta);
+
+function addGuest(val=""){
+    const input=document.createElement("input");
+    input.placeholder="Nome do convidado";
+    input.value=val;
+    input.oninput=checkChanges;
+    guests.appendChild(input);
+}
+
+principal.oninput=checkChanges;
+
+function showStatus(t,m){
+    statusTitle.innerText=t;
+    statusMsg.innerText=m;
+    countdownMsg.innerText="";
+    goNext("status");
+}
+
+async function confirmar(){
+    try{
+        const r=await fetch(url,{headers:{Authorization:`token ${token}`}});
+        if(!r.ok)throw"API";
+        const d=await r.json();
+        let lista=d.content?JSON.parse(atob(d.content)):[];
+        const dados={
+            id:userId,
+            principal:principal.value.trim(),
+            subconvidados:[...guests.children].map(i=>i.value.trim()).filter(v=>v),
+            data:new Date().toISOString()
+        };
+        lista=lista.filter(u=>u.id!==userId);
+        lista.push(dados);
+
+        const save=await fetch(url,{
+            method:"PUT",
+            headers:{
+                Authorization:`token ${token}`,
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                message:`Confirmação ${dados.principal}`,
+                content:btoa(JSON.stringify(lista,null,2)),
+                sha:d.sha
+            })
+        });
+
+        if(!save.ok)throw"SAVE";
+
+showStatus("✅ Ebaaa!","Sua presença foi anotada com sucesso!");
+        let c=5;
+        const i=setInterval(()=>{
+            countdownMsg.innerText=`💜 Aguarde estou preparando uma mesnagem especial para você... (${c})`;
+            c--;
+            if(c<0){
+                clearInterval(i);
+                goNext("carinho");
+            }
+        },1000);
+
+    }catch(e){
+        showStatus(
+            "❌ Erro",
+            e==="API"
+            ?"A API não retornou resposta."
+            :"Ocorreu um problema ao salvar os dados na API."
+        );
+    }
+}
+
+function checkChanges(){
+    if(!originalSnapshot)return;
+    const atual=JSON.stringify({
+        p:principal.value,
+        g:[...guests.children].map(i=>i.value)
+    });
+    submitBtn.disabled=atual===originalSnapshot;
+    submitBtn.innerText="Atualizar";
+}
+
+window.onload=async()=>{
+    try{
+        const r=await fetch(url,{headers:{Authorization:`token ${token}`}});
+        const d=await r.json();
+        const lista=JSON.parse(atob(d.content));
+        const user=lista.find(u=>u.id===userId);
+        if(user){
+            principal.value=user.principal;
+            user.subconvidados.forEach(g=>addGuest(g));
+            originalSnapshot=JSON.stringify({
+                p:user.principal,
+                g:user.subconvidados
+            });
+            submitBtn.innerText="Atualizar";
+            submitBtn.disabled=true;
+        }
+    }catch{}
+};
+</script>
+
+</body>
+</html>
