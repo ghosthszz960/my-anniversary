@@ -1,11 +1,5 @@
 [
   {
-    "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
-    "principal": "Gustavo",
-    "subconvidados": [],
-    "data": "2026-01-12T18:59:08.621Z"
-  },
-  {
     "id": "378700a4-44e1-4e6d-9370-87c68aba187f",
     "principal": "Cássia",
     "subconvidados": [],
@@ -50,5 +44,13 @@
       "Hig"
     ],
     "data": "2026-01-12T23:09:03.179Z"
+  },
+  {
+    "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
+    "principal": "Gustavo",
+    "subconvidados": [
+      "Pessoa 2"
+    ],
+    "data": "2026-01-12T23:11:08.357Z"
   }
 ]
