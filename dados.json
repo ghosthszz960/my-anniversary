@@ -26,12 +26,6 @@
     "data": "2026-01-12T20:01:08.778Z"
   },
   {
-    "id": "3fd93785-6f9a-4b2d-94f4-f4c02a122083",
-    "principal": "Katia",
-    "subconvidados": [],
-    "data": "2026-01-12T20:40:58.747Z"
-  },
-  {
     "id": "aaa2f707-42b5-4880-a05c-ee3af0fc47b3",
     "principal": "O mais bonito de Osasco",
     "subconvidados": [],
@@ -52,5 +46,13 @@
       "Pessoa 2"
     ],
     "data": "2026-01-12T23:11:08.357Z"
+  },
+  {
+    "id": "3fd93785-6f9a-4b2d-94f4-f4c02a122083",
+    "principal": "Katia",
+    "subconvidados": [
+      "Ludmilla"
+    ],
+    "data": "2026-01-12T23:12:44.816Z"
   }
 ]
