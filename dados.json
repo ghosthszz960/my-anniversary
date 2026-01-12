@@ -46,7 +46,9 @@
   {
     "id": "fc91cdbe-2536-48cc-89f3-caf1bad6e3f9",
     "principal": "Maicon",
-    "subconvidados": [],
-    "data": "2026-01-12T23:08:24.404Z"
+    "subconvidados": [
+      "Hig"
+    ],
+    "data": "2026-01-12T23:09:03.179Z"
   }
 ]
