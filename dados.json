@@ -1,7 +1,7 @@
 [
   {
     "id": "378700a4-44e1-4e6d-9370-87c68aba187f",
-    "principal": "Cássia",
+    "principal": "CÃ¡ssia",
     "subconvidados": [],
     "data": "2026-01-12T19:05:51.895Z"
   },
@@ -75,8 +75,14 @@
     "id": "34133766-cba9-49c2-8171-648837d9272f",
     "principal": "Tia Hellen",
     "subconvidados": [
-      "Vov� Natalina"
+      "Vovó Natalina"
     ],
     "data": "2026-01-13T01:00:48.739Z"
+  },
+  {
+    "id": "89ef67f5-fb6a-4059-a485-a53e75527cfb",
+    "principal": "Guilherme Lisboa",
+    "subconvidados": [],
+    "data": "2026-01-13T01:03:21.914Z"
   }
 ]
