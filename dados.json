@@ -32,14 +32,6 @@
     "data": "2026-01-12T22:27:41.427Z"
   },
   {
-    "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
-    "principal": "Gustavo",
-    "subconvidados": [
-      "Pessoa 2"
-    ],
-    "data": "2026-01-12T23:11:08.357Z"
-  },
-  {
     "id": "3fd93785-6f9a-4b2d-94f4-f4c02a122083",
     "principal": "Katia",
     "subconvidados": [
@@ -85,5 +77,13 @@
       "Hhhh"
     ],
     "data": "2026-01-16T16:43:47.428Z"
+  },
+  {
+    "id": "a306279c-b43d-4e6a-a2a4-ea7953cfec20",
+    "principal": "Gustavo",
+    "subconvidados": [
+      "Pessoa"
+    ],
+    "data": "2026-01-17T22:46:43.137Z"
   }
 ]
